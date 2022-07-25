@@ -6,7 +6,7 @@ include('sql.php');
 if($_GET){
   $addr = $_GET['address'];
   // echo $addr;
-  $sql = "SELECT name,region,picture FROM restaurant WHERE  region = ?  LIMIT 8"    ;
+  $sql = "SELECT id,name,region,description,picture FROM restaurant WHERE  region = ?   ORDER BY id DESC LIMIT 9";
   // 資料準備
   $stmt = $mysqli->prepare($sql);
   $stmt->bind_param('s',$addr);
