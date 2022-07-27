@@ -13,11 +13,21 @@
 
     if($_GET){
         $sqluid = $_GET['uid'];
+        //找出最新訂單編號
+        $sql = "SELECT orderdetails.orderId FROM `orderdetails`
+        LEFT JOIN `ordert` ON ordert.orderId = orderdetails.orderId
+        LEFT JOIN restaurant ON ordert.restaurantId = restaurant.id 
+        WHERE uId = {$sqluid} AND ordert.state = '未結帳'
+        GROUP BY orderId LIMIT 1";
+        $result=$mysqli->query($sql);
+        // echo($result->fetch_object()->orderId);
+        $resultId = $result->fetch_object()->orderId;
+        
         $sql = 
         "SELECT * FROM `ordert` 
          LEFT JOIN `orderdetails` ON ordert.orderId = orderdetails.orderId
          LEFT JOIN restaurant ON ordert.restaurantId = restaurant.id 
-         WHERE uId = {$sqluid} AND ordert.state = '未結帳'";
+         WHERE uId = {$sqluid} AND ordert.state = '未結帳' AND ordert.orderId = {$resultId}";
         // $sql = "SELECT * FROM `orderdetails` RIGHT JOIN `ordert` ON `ordert`.orderId = `orderdetails`.orderId WHERE uId = 12";
         $result=$mysqli->query($sql);
 
