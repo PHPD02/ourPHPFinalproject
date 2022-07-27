@@ -42,16 +42,17 @@ if ( $_POST['RtnCode'] =='1' && $CheckMacValue == $_POST['CheckMacValue'] ){
     // 
     // 要處理的程式放在這裡，例如將線上服務啟用、更新訂單資料庫付款資訊等
     // 
-    var_dump($_POST);
+    // var_dump($_POST);
     $resultno = $_POST['MerchantTradeNo'];
-    $sql = "SELECT * FROM `ordert` WHERE orderId = '{$resultno}'";
+    // $sql = "SELECT * FROM `ordert` WHERE orderId = '{$resultno}'";
+    $sql = "UPDATE `ordert` SET `state`='已結帳，未收貨' WHERE `orderId`= $resultno";
     $result = $mysqli->query($sql);
-    echo $result;
+    // echo $result;
 
     
 }
 
-// header("Location: http://localhost:3000/");
+header("Location: http://localhost:3000/orderDetails");
  
 // 接收到資訊回應ok
 // echo 'OK!付款成功';
