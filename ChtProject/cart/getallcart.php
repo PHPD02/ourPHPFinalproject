@@ -13,7 +13,8 @@
 
     if($_GET){
         $sqluid = $_GET['uid'];
-        $sql = "SELECT * FROM `ordert` LEFT JOIN `orderdetails` ON ordert.orderId = orderdetails.orderId WHERE uId = '{$sqluid}'";
+        $sql = "SELECT * FROM `ordert` LEFT JOIN `orderdetails` ON ordert.orderId = orderdetails.orderId LEFT JOIN restaurant ON ordert.restaurantId = restaurant.id WHERE uId = {$sqluid}";
+        // $sql = "SELECT * FROM `orderdetails` RIGHT JOIN `ordert` ON `ordert`.orderId = `orderdetails`.orderId WHERE uId = 12";
         $result=$mysqli->query($sql);
 
         $dataArray = array();
