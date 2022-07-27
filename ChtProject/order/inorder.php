@@ -18,13 +18,6 @@
     $freight = $output->freight;
     $orderdetails = $output->orderdetails;
 
-    // echo $cost;
-
-    // orderdetails為 array裡面有object
-    // foreach($orderdetails as $value){
-    //     var_dump ($value->id);
-    // }
-
     // id流水號//流水沒重複//
     $idrand=''; $numend=0; $temp='';
 
@@ -45,19 +38,6 @@
     VALUES ($temp, $restaurantId, $uid, $cost, $freight)";
     $result=$mysqli->query($sql);
 
-    // $sql = "SELECT orderId FROM `ordert` WHERE orderId = '{$temp}'";
-    // $result = $mysqli->query($sql);
-    // echo $result;
-
-
-    // // 找出此筆流水號
-    // $sql = "SELECT * FROM `ordert` WHERE orderId = $temp ";
-    // $result=$mysqli->query($sql);
-    // $data = $result->fetch_object();
-
-    // $finaldata = json_encode($data);
-
-
     // orderdetails為 array裡面有object
     foreach($orderdetails as $value){
         // echo (($value->cost)*($value->mount));
@@ -67,6 +47,11 @@
         $result=$mysqli->query($sql);
         // echo $result;
     }
+
+    //刪除購物車資料
+    //here
+
+
 
     // echo $temp;
     $sql = "SELECT * FROM `ordert` WHERE orderId = '{$temp}'";

@@ -9,12 +9,39 @@
         require_once $className . '.php';
     });
 
-    $input = file_get_contents("php://input");
-    $output = json_decode($input);
+    // var_dump($_GET['uid']);
+
+    if($_GET){
+        $sqluid = $_GET['uid'];
+        $sql = "SELECT * FROM `ordert` LEFT JOIN `orderdetails` ON ordert.orderId = orderdetails.orderId WHERE uId = '{$sqluid}'";
+        $result=$mysqli->query($sql);
+
+        $dataArray = array();
+        while($dataa = $result->fetch_object()){
+            $dataArray[] = $dataa;
+        }
+        // $dataa = $result->fetch_object();
+        $data = json_encode($dataArray);
+        echo ($data);
+    }else{
+        echo "Nothing to get";
+    }
+
+    // $input = file_get_contents("php://input");
+    // $output = json_decode($input);
     // $sqlId = $output->menuItemId;
 
     // var_dump($output);
-    var_dump($_GET);
+    
+    // var_dump($output);
+
+    // $data = array();
+    // $data = $_GET;
+
+    // var_dump($data);
+    
+
+
 
     // $sql = "SELECT * FROM carts";
 
