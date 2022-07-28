@@ -18,11 +18,12 @@
         LEFT JOIN `ordert` ON ordert.orderId = orderdetails.orderId
         LEFT JOIN restaurant ON ordert.restaurantId = restaurant.id 
         WHERE uId = {$sqluid} AND ordert.state = '未結帳'
-        GROUP BY orderId LIMIT 1";
+        GROUP BY orderId DESC LIMIT 1";
         $result=$mysqli->query($sql);
         // echo($result->fetch_object()->orderId);
         $resultId = $result->fetch_object()->orderId;
         
+        // 最新編號未結帳訂單
         $sql = 
         "SELECT * FROM `ordert` 
          LEFT JOIN `orderdetails` ON ordert.orderId = orderdetails.orderId
@@ -41,44 +42,5 @@
     }else{
         echo "Nothing to get";
     }
-
-    // $input = file_get_contents("php://input");
-    // $output = json_decode($input);
-    // $sqlId = $output->menuItemId;
-
-    // var_dump($output);
-    
-    // var_dump($output);
-
-    // $data = array();
-    // $data = $_GET;
-
-    // var_dump($data);
-    
-
-
-
-    // $sql = "SELECT * FROM carts";
-
-    // $result = $mysqli->query($sql);
-    // // $data = $result->fetch_object();
-
-    // $dataArray = array();
-
-    // while ($carts = $result->fetch_object()){
-    //     $dataArray[] = $carts;
-        
-
-    //     // echo json_encode($carts);
-    //     // var_dump($carts);
-    // }
-    // $fData = json_encode($dataArray);
-    // echo $fData;
-
-
-
-
-    // $finalData = json_encode($dataArray);
-    // echo $finalData;
 
 ?>

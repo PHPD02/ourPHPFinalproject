@@ -49,7 +49,6 @@ if ( $_POST['RtnCode'] =='1' && $CheckMacValue == $_POST['CheckMacValue'] ){
     $result = $mysqli->query($sql);
     // echo $result;
 
-    
 }
 
 header("Location: http://localhost:3000/orderDetails");

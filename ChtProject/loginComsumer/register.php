@@ -14,13 +14,13 @@
         try{
             $sql = "INSERT INTO usermember (email,`password`,firstName,lastName,tel) VALUES " .
             "('{$inputEmail}','{$password}','{$firstname}','{$lastname}','{$tel}')";
-        if ($mysqli->query($sql)){
+            if ($mysqli->query($sql)){
 
-            echo "註冊成功!";
-        }else{
-            echo "此帳號已註冊!";
+                echo "註冊成功!";
+            }else{
+                echo "此帳號已註冊!";
 
-        }
+            }
         }catch(Exception $e){
 
             echo "something wrong or 此帳號已註冊!";
