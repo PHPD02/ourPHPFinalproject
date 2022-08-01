@@ -38,7 +38,9 @@ if (isset($_POST["submit"])) {
         $errorPass = true;
     }else{
         $mailToname = "順弁-創新應用外送平台服務";  //收件人名稱
-        $mailTo = "bgkong1205@gmail.com" ; //收件信箱
+        // $mailTo = "bgkong1205@gmail.com" ; //收件信箱
+        $mailTo = "sunsuarestaurant0809@gmail.com" ; //收件信箱
+        //密碼 @sunsua0809
         $mailFromname= $name.$gender;  //寄件人
         $mailFrom = $email;  //寄件人信箱
         // $mailSubject = "相關客服案件" ; //主旨
