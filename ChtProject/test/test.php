@@ -15,6 +15,10 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 // var_dump($_POST)
 // var_dump($array1[0][0]);
 
-$_POST = json_decode(file_get_contents("php://input"),true);
-echo $_POST['data1'];
+// $_POST = json_decode(file_get_contents("php://input"),true);
+// echo $_POST['data1'];
+$idrand = strval(time());
+$uid = 11;
+
+echo gettype($idrand);
 ?>

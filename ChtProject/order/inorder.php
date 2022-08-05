@@ -23,9 +23,10 @@
 
     /// 當沒有流水號或流水號重覆時重新產生流水號
     while( !$idrand || $numend !=0){
-        $idrand = time();
+        $idrand = strval(time());
+        $tu = strval($uid);
         // echo $idrand . "<br />"; 
-        $temp = $idrand;
+        $temp = intval($idrand.$tu);
         $sql = "SELECT orderId FROM `ordert` WHERE orderId = '{$temp}'";
         $result = $mysqli->query($sql);
         // echo $result;
