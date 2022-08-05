@@ -12,7 +12,8 @@ $sql =  "   SELECT *
                 proposal LEFT JOIN ( SELECT email,firstName,lastName FROM usermember) AS A
                 ON proposal.emailPartyA = email
                 ) 
-            WHERE state = 1;";
+            WHERE state = 1
+            ORDER BY arriveTime ASC;";
 $stmt = $mysqli->prepare($sql);
 $stmt->execute();
 $result = $stmt->get_result();

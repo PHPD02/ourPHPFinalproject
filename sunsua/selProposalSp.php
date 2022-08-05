@@ -22,7 +22,8 @@ if ($_GET) {
                     proposal LEFT JOIN ( SELECT email,firstName,lastName FROM usermember) AS A
                     ON proposal.emailPartyA = email
                     ) 
-                WHERE state = 1 and (addr LIKE ? or meal LIKE ?)";
+                WHERE state = 1 and (addr LIKE ? or meal LIKE ?)
+                ORDER BY arriveTime ASC;";
     // echo $sql;
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param('ss', $keyword, $keyword);
